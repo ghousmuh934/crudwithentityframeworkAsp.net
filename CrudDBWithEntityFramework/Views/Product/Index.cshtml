@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CrudDBWithEntityFramework.Models.Product> 
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Count</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Count)</td>
+            <td><a href="@Url.Action("Edit","Product",new {@id = item.ProductId})">Edit</a></td>
+            <td><a href="@Url.Action("Delete","Product",new {@id = item.ProductId})">Delete</a></td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("Create","Product")">Add New Product</a>
